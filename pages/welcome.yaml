@@ -7,4 +7,4 @@ blocks:
       - id: title
         type: Title
         properties:
-          content: Hello New World
+          content: Hello World

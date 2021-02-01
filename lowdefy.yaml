@@ -1,24 +1,38 @@
 name: lowdefy-project-template
-lowdefy: '3.4.0'
+lowdefy: 3.4.0
 
-config:
-  homePageId: welcome
+
+connections:
+  - id: google_sheet
+    type: GoogleSheet
+    properties:
+      client_email:
+        _secret: SHEETS_CLIENT_EMAIL
+      private_key:
+        _base64.decode:
+          _secret: SHEETS_PRIVATE_KEY
+      sheetIndex: 0
+      spreadsheetId: https://docs.google.com/spreadsheets/d/1poNSQ-YC6iWv7ptRbZeWh83kHX-wfW_tbPQUbFcQjfw/edit#gid=0
+      write: true
 
 menus:
   - id: default
     links:
-      - id: examples
+      - id: welcome
         type: MenuLink
-        url: https://lowdefy.com/examples
         properties:
-          title: Examples
-          icon: AppstoreOutlined
-      - id: docs
+          icon: HomeOutlined
+          title: Home
+        pageId: welcome
+      - id: new-ticket
         type: MenuLink
-        url: https://docs.lowdefy.com
         properties:
-          title: Docs
-          icon: ReadOutlined
+          icon: AlertOutlined
+          title: New ticket
+        pageId: new-ticket
 
 pages:
   - _ref: pages/welcome.yaml
+  - _ref: pages/new-ticket.yaml
+
+
